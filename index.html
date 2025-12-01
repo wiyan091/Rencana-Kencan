@@ -54,20 +54,16 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Latar belakang gradien pink yang lebih indah */
             background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
             display: flex;
             justify-content: center;
-            /* Align items to start to allow scrolling from top */
             align-items: flex-start;
             min-height: 100vh;
             margin: 0;
             color: #333;
-            /* --- PERUBAHAN 1: BIARKAN HALAMAN DI-SCROLL --- */
             overflow-y: auto;
             position: relative;
             padding: 20px 0;
-            /* Beri sedikit jarak di atas dan bawah */
         }
 
         /* Elemen hati yang melayang */
@@ -77,40 +73,30 @@
             color: rgba(255, 255, 255, 0.7);
             animation: floatUp 6s linear infinite;
             z-index: 1;
-            /* Di belakang kontainer */
         }
 
         .container {
             background-color: rgba(255, 255, 255, 0.25);
-            /* Efek kaca buram */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            /* Untuk browser Safari */
             padding: 40px 50px;
             border-radius: 25px;
-            /* Bayangan yang lebih dalam dan berwarna pink */
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2), 0 5px 15px rgba(233, 30, 99, 0.3);
             max-width: 500px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.18);
             z-index: 2;
-            /* Di atas hati */
             animation: fadeInUp 0.8s ease-out;
-            /* Animasi masuk */
             margin-top: 20px;
-            /* Beri jarak dari atas layar */
             margin-bottom: 20px;
-            /* Beri jarak dari bawah layar */
         }
 
         h1 {
             font-family: 'Pacifico', cursive;
             color: #ad1457;
-            /* Pink lebih gelap dan elegan */
             font-size: 2.8em;
             margin-bottom: 10px;
-            /* Efek cahaya pada teks */
             text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
         }
 
@@ -145,12 +131,10 @@
             min-width: 120px;
         }
 
-        /* Menyembunyikan radio button default */
         input[type="radio"] {
             display: none;
         }
 
-        /* Membuat label terlihat seperti tombol yang lebih halus */
         .option-item label {
             display: block;
             padding: 14px;
@@ -164,7 +148,6 @@
             margin-bottom: 0;
         }
 
-        /* Efek saat label di-hover */
         .option-item label:hover {
             background-color: rgba(248, 187, 208, 0.6);
             border-color: #f48fb1;
@@ -172,7 +155,6 @@
             box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
         }
 
-        /* Efek saat radio button dipilih */
         input[type="radio"]:checked+label {
             background-color: #e91e63;
             color: white;
@@ -198,11 +180,17 @@
             box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
         }
 
+        /* --- PERUBAHAN: GAYA UNTUK INPUT KONDISIONAL --- */
+        .conditional-input {
+            display: none;
+            /* Sembunyikan secara default */
+            margin-top: 15px;
+        }
+
         button {
             width: 100%;
             padding: 16px;
             background: linear-gradient(45deg, #e91e63, #f06292);
-            /* Gradien pada tombol */
             color: white;
             border: none;
             border-radius: 15px;
@@ -228,17 +216,14 @@
             margin-top: 20px;
             padding: 15px;
             background-color: rgba(232, 245, 233, 0.8);
-            /* Efek kaca buram juga untuk pesan sukses */
             color: #2e7d32;
             border-radius: 12px;
             font-weight: 600;
             display: none;
-            /* Sembunyikan awalnya */
             backdrop-filter: blur(5px);
             border: 1px solid rgba(76, 175, 80, 0.3);
         }
 
-        /* --- PERUBAHAN 2: MEDIA QUERY UNTUK RESPONSIVITAS --- */
         @media (max-width: 600px) {
             .container {
                 padding: 30px 25px;
@@ -294,6 +279,10 @@
                         <label for="tempat-lainnya">Tempat Lainnya</label>
                     </div>
                 </div>
+                <!-- --- PERUBAHAN: INPUT KONDISIONAL UNTUK TEMPAT --- -->
+                <div id="tempat-lainnya-field" class="conditional-input">
+                    <input type="text" id="tempat-lainnya-input" placeholder="Ketik tempatnya di sini...">
+                </div>
             </div>
 
             <!-- Pertanyaan 2: Nonton Film Apa -->
@@ -312,20 +301,23 @@
                     </div>
                     <div class="option-item">
                         <input type="radio" id="hotpeace" name="makan" value="Hotpeace">
-                        <label for="hotpeace">Hotpeace</label>
+                        <label for="hotpeace">Hotpes</label>
                     </div>
                     <div class="option-item">
                         <input type="radio" id="burger-king" name="makan" value="Burger King">
                         <label for="burger-king">Burger King</label>
                     </div>
-
                     <div class="option-item">
                         <input type="radio" id="lainnya" name="makan" value="Lainnya">
                         <label for="lainnya">Lainnya</label>
                     </div>
                 </div>
+                <!-- --- PERUBAHAN: INPUT KONDISIONAL UNTUK MAKAN --- -->
+                <div id="makan-lainnya-field" class="conditional-input">
+                    <input type="text" id="makan-lainnya-input" placeholder="Ketik tempat makan di sini...">
+                </div>
             </div>
-            <!-- Pesan sukses diperbarui -->
+
             <div id="successMessage" class="success-message">
                 Yeay! Sekarang kita lanjut ke WhatsApp ya, Widia Cantik! 😘
             </div>
@@ -336,10 +328,7 @@
 
     <!-- Kode JavaScript Dimulai Di Sini -->
     <script>
-        // Tunggu hingga seluruh halaman HTML dimuat
         document.addEventListener('DOMContentLoaded', function () {
-
-            // Ambil elemen form dari HTML
             const form = document.getElementById('datePlanForm');
             const successMessage = document.getElementById('successMessage');
 
@@ -347,69 +336,87 @@
             function createHeart() {
                 const heart = document.createElement('div');
                 heart.classList.add('floating-heart');
-                heart.innerHTML = '💕'; // Anda bisa ganti dengan ❤️, 💖, atau 💗
-
-                // Posisi horizontal acak
+                heart.innerHTML = '💕';
                 heart.style.left = Math.random() * 100 + 'vw';
-
-                // Durasi animasi acak agar tidak seragam
-                const duration = Math.random() * 3 + 5; // Antara 5 hingga 8 detik
+                const duration = Math.random() * 3 + 5;
                 heart.style.animationDuration = duration + 's';
-
-                // Ukuran hati acak
-                const size = Math.random() * 1 + 0.8; // Antara 0.8rem dan 1.8rem
+                const size = Math.random() * 1 + 0.8;
                 heart.style.fontSize = size + 'rem';
-
                 document.body.appendChild(heart);
-
-                // Hapus elemen hati dari DOM setelah animasi selesai
                 setTimeout(() => {
                     heart.remove();
                 }, duration * 1000);
             }
-
-            // Buat hati baru setiap 800 milidetik
             setInterval(createHeart, 800);
+
+            // --- PERUBAHAN: LOGIKA UNTUK INPUT KONDISIONAL ---
+            const tempatLainnyaRadio = document.getElementById('tempat-lainnya');
+            const tempatLainnyaField = document.getElementById('tempat-lainnya-field');
+            const makanLainnyaRadio = document.getElementById('lainnya');
+            const makanLainnyaField = document.getElementById('makan-lainnya-field');
+
+            // Event listener untuk radio button bioskop
+            document.querySelectorAll('input[name="bioskop"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (tempatLainnyaRadio.checked) {
+                        tempatLainnyaField.style.display = 'block';
+                    } else {
+                        tempatLainnyaField.style.display = 'none';
+                    }
+                });
+            });
+
+            // Event listener untuk radio button makan
+            document.querySelectorAll('input[name="makan"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (makanLainnyaRadio.checked) {
+                        makanLainnyaField.style.display = 'block';
+                    } else {
+                        makanLainnyaField.style.display = 'none';
+                    }
+                });
+            });
 
             // --- LOGIKA FORM UNTUK WHATSAPP ---
             form.addEventListener('submit', function (event) {
-                // Mencegah form untuk melakukan reload halaman
                 event.preventDefault();
 
-                // Ambil jawaban dari setiap pertanyaan
-                const bioskop = document.querySelector('input[name="bioskop"]:checked').value;
+                // --- PERUBAHAN: AMBIL NILAI DARI INPUT KONDISIONAL ---
+                const bioskopRadio = document.querySelector('input[name="bioskop"]:checked');
+                let bioskopValue = bioskopRadio.value;
+                if (bioskopValue === 'Tempat Lainnya') {
+                    bioskopValue = document.getElementById('tempat-lainnya-input').value;
+                    if (!bioskopValue) { // Validasi jika kosong
+                        alert('Mohon isi tempat nontonnya ya, Cantik!');
+                        return;
+                    }
+                }
+
                 const film = document.getElementById('film').value;
-                const makan = document.querySelector('input[name="makan"]:checked').value;
 
-                // Nomor WhatsApp tujuan
+                const makanRadio = document.querySelector('input[name="makan"]:checked');
+                let makanValue = makanRadio.value;
+                if (makanValue === 'Lainnya') {
+                    makanValue = document.getElementById('makan-lainnya-input').value;
+                    if (!makanValue) { // Validasi jika kosong
+                        alert('Mohon isi tempat makannya ya, Cantik!');
+                        return;
+                    }
+                }
+
                 const noWa = '6282220490991';
+                const pesanWhatsApp = "*Ini rencana kencan kita ya:* \n" +
+                    "- Tempat Nonton: " + bioskopValue + "\n" +
+                    "- Film: " + film + "\n" +
+                    "- Makan: " + makanValue + "\n";
 
-                // --- PERUBAHAN 3: PESAN WHATSAPP YANG LEBIH AMAN ---
-                // Buat pesan WhatsApp yang lebih aman, tanpa karakter yang bisa merusak URL
-                const pesanWhatsApp = `
-                Ini rencana kencan kita ya:
-
-                - Tempat Nonton: ${bioskop}
-                - Film: ${film}
-                - Makan: ${makan}
-
-                `.trim();
-
-
-                // Encode pesan agar aman untuk URL
                 const pesanTerencode = encodeURIComponent(pesanWhatsApp);
-
-                // Buat URL WhatsApp
                 const urlWhatsApp = `https://wa.me/${noWa}?text=${pesanTerencode}`;
 
-                // Tampilkan pesan sukses dulu
                 successMessage.style.display = 'block';
-
-                // Arahkan ke WhatsApp setelah delay sebentar agar pesan sukses terlihat
                 setTimeout(() => {
                     window.location.href = urlWhatsApp;
-                }, 500); // Delay 500ms
-
+                }, 500);
             });
         });
     </script>

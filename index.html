@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rencana Kencan Kita 💕</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23e91e63%22><path d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/></svg>">
+
+    <!-- Google Font Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Kode CSS Dimulai Di Sini -->
+    <style>
+        /* Animasi untuk hati yang melayang */
+        @keyframes floatUp {
+            0% {
+                bottom: -10%;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateX(100px) rotate(720deg);
+            }
+        }
+
+        /* Animasi untuk masuknya form dari bawah */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Latar belakang gradien pink yang lebih indah */
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+            display: flex;
+            justify-content: center;
+            /* Align items to start to allow scrolling from top */
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            /* --- PERUBAHAN 1: BIARKAN HALAMAN DI-SCROLL --- */
+            overflow-y: auto;
+            position: relative;
+            padding: 20px 0;
+            /* Beri sedikit jarak di atas dan bawah */
+        }
+
+        /* Elemen hati yang melayang */
+        .floating-heart {
+            position: fixed;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: floatUp 6s linear infinite;
+            z-index: 1;
+            /* Di belakang kontainer */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.25);
+            /* Efek kaca buram */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* Untuk browser Safari */
+            padding: 40px 50px;
+            border-radius: 25px;
+            /* Bayangan yang lebih dalam dan berwarna pink */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2), 0 5px 15px rgba(233, 30, 99, 0.3);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            z-index: 2;
+            /* Di atas hati */
+            animation: fadeInUp 0.8s ease-out;
+            /* Animasi masuk */
+            margin-top: 20px;
+            /* Beri jarak dari atas layar */
+            margin-bottom: 20px;
+            /* Beri jarak dari bawah layar */
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ad1457;
+            /* Pink lebih gelap dan elegan */
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            /* Efek cahaya pada teks */
+            text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
+        }
+
+        .subtitle {
+            color: #c2185b;
+            margin-bottom: 35px;
+            font-weight: 400;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .option-item {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        /* Menyembunyikan radio button default */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Membuat label terlihat seperti tombol yang lebih halus */
+        .option-item label {
+            display: block;
+            padding: 14px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(248, 187, 208, 0.7);
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* Efek saat label di-hover */
+        .option-item label:hover {
+            background-color: rgba(248, 187, 208, 0.6);
+            border-color: #f48fb1;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
+        }
+
+        /* Efek saat radio button dipilih */
+        input[type="radio"]:checked+label {
+            background-color: #e91e63;
+            color: white;
+            border-color: #c2185b;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid rgba(248, 187, 208, 0.7);
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #e91e63;
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(45deg, #e91e63, #f06292);
+            /* Gradien pada tombol */
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.4);
+        }
+
+        .success-message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(232, 245, 233, 0.8);
+            /* Efek kaca buram juga untuk pesan sukses */
+            color: #2e7d32;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+            /* Sembunyikan awalnya */
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        /* --- PERUBAHAN 2: MEDIA QUERY UNTUK RESPONSIVITAS --- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .form-group label {
+                font-size: 1em;
+            }
+
+            .option-item {
+                flex: 1 1 100%;
+                min-width: 100%;
+            }
+        }
+    </style>
+    <!-- Kode CSS Berakhir Di Sini -->
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Rencana Kencan Kita 💕</h1>
+        <p class="subtitle">Yuk, rencanakan hari spesial kita! Isi form ini ya Widia Cantik...</p>
+
+        <form id="datePlanForm">
+            <!-- Pertanyaan 1: Nonton Dimana -->
+            <div class="form-group">
+                <label>Mau nonton di mana, Cantik? 🎬</label>
+                <div class="options">
+                    <div class="option-item">
+                        <input type="radio" id="dp" name="bioskop" value="DP" required>
+                        <label for="dp">DP</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="paragon" name="bioskop" value="Paragon">
+                        <label for="paragon">Paragon</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="cl" name="bioskop" value="CL">
+                        <label for="cl">CL</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="tempat-lainnya" name="bioskop" value="Tempat Lainnya">
+                        <label for="tempat-lainnya">Tempat Lainnya</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pertanyaan 2: Nonton Film Apa -->
+            <div class="form-group">
+                <label for="film">Film apa yang mau kita tonton? 🍿</label>
+                <input type="text" id="film" name="film" placeholder="Ketik judul filmnya di sini..." required>
+            </div>
+
+            <!-- Pertanyaan 3: Makan Dimana -->
+            <div class="form-group">
+                <label>Abis itu, mau makan di mana? 🍜</label>
+                <div class="options">
+                    <div class="option-item">
+                        <input type="radio" id="golden-lamian" name="makan" value="Golden Lamian" required>
+                        <label for="golden-lamian">Golden Lamian</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="hotpeace" name="makan" value="Hotpeace">
+                        <label for="hotpeace">Hotpeace</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="burger-king" name="makan" value="Burger King">
+                        <label for="burger-king">Burger King</label>
+                    </div>
+
+                    <div class="option-item">
+                        <input type="radio" id="lainnya" name="makan" value="Lainnya">
+                        <label for="lainnya">Lainnya</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Pesan sukses diperbarui -->
+            <div id="successMessage" class="success-message">
+                Yeay! Sekarang kita lanjut ke WhatsApp ya, Widia Cantik! 😘
+            </div>
+
+            <button type="submit">Kirim Rencana ke WhatsApp ❤️</button>
+        </form>
+    </div>
+
+    <!-- Kode JavaScript Dimulai Di Sini -->
+    <script>
+        // Tunggu hingga seluruh halaman HTML dimuat
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Ambil elemen form dari HTML
+            const form = document.getElementById('datePlanForm');
+            const successMessage = document.getElementById('successMessage');
+
+            // --- FUNGSI UNTUK MEMBUAT HATI MELAYANG ---
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '💕'; // Anda bisa ganti dengan ❤️, 💖, atau 💗
+
+                // Posisi horizontal acak
+                heart.style.left = Math.random() * 100 + 'vw';
+
+                // Durasi animasi acak agar tidak seragam
+                const duration = Math.random() * 3 + 5; // Antara 5 hingga 8 detik
+                heart.style.animationDuration = duration + 's';
+
+                // Ukuran hati acak
+                const size = Math.random() * 1 + 0.8; // Antara 0.8rem dan 1.8rem
+                heart.style.fontSize = size + 'rem';
+
+                document.body.appendChild(heart);
+
+                // Hapus elemen hati dari DOM setelah animasi selesai
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }
+
+            // Buat hati baru setiap 800 milidetik
+            setInterval(createHeart, 800);
+
+            // --- LOGIKA FORM UNTUK WHATSAPP ---
+            form.addEventListener('submit', function (event) {
+                // Mencegah form untuk melakukan reload halaman
+                event.preventDefault();
+
+                // Ambil jawaban dari setiap pertanyaan
+                const bioskop = document.querySelector('input[name="bioskop"]:checked').value;
+                const film = document.getElementById('film').value;
+                const makan = document.querySelector('input[name="makan"]:checked').value;
+
+                // Nomor WhatsApp tujuan
+                const noWa = '6282220490991';
+
+                // --- PERUBAHAN 3: PESAN WHATSAPP YANG LEBIH AMAN ---
+                // Buat pesan WhatsApp yang lebih aman, tanpa karakter yang bisa merusak URL
+                const pesanWhatsApp = `
+                Ini rencana kencan kita ya:
+
+                - Tempat Nonton: ${bioskop}
+                - Film: ${film}
+                - Makan: ${makan}
+
+                `.trim();
+
+
+                // Encode pesan agar aman untuk URL
+                const pesanTerencode = encodeURIComponent(pesanWhatsApp);
+
+                // Buat URL WhatsApp
+                const urlWhatsApp = `https://wa.me/${noWa}?text=${pesanTerencode}`;
+
+                // Tampilkan pesan sukses dulu
+                successMessage.style.display = 'block';
+
+                // Arahkan ke WhatsApp setelah delay sebentar agar pesan sukses terlihat
+                setTimeout(() => {
+                    window.location.href = urlWhatsApp;
+                }, 500); // Delay 500ms
+
+            });
+        });
+    </script>
+    <!-- Kode JavaScript Berakhir Di Sini -->
+
+</body>
+
+</html>

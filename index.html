@@ -180,10 +180,8 @@
             box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
         }
 
-        /* --- PERUBAHAN: GAYA UNTUK INPUT KONDISIONAL --- */
         .conditional-input {
             display: none;
-            /* Sembunyikan secara default */
             margin-top: 15px;
         }
 
@@ -224,6 +222,76 @@
             border: 1px solid rgba(76, 175, 80, 0.3);
         }
 
+        /* --- PERUBAHAN: TAMBAHKAN CSS UNTUK CUSTOM ALERT --- */
+        .custom-alert-overlay {
+            display: none;
+            /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 1000;
+            /* Pastikan di atas semua elemen */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Latar belakang gelap transparan */
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-alert-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 2px solid #f8bbd0;
+            /* Border pink */
+            animation: fadeInUp 0.5s ease-out;
+            /* Animasi muncul */
+        }
+
+        .alert-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .custom-alert-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #e91e63;
+            /* Judul pink */
+            margin: 0 0 10px 0;
+        }
+
+        .custom-alert-box p {
+            font-family: 'Poppins', sans-serif;
+            color: #555;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        #closeAlertBtn {
+            background: linear-gradient(45deg, #e91e63, #f06292);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
+        }
+
+        #closeAlertBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.3);
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 30px 25px;
@@ -253,6 +321,16 @@
 
 <body>
 
+    <!-- --- PERUBAHAN: TAMBAHKAN HTML UNTUK CUSTOM ALERT --- -->
+    <div id="customAlert" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <div class="alert-icon">👉</div>
+            <h3>Oops, lupa!</h3>
+            <p id="customAlertMessage">Pesan error akan muncul di sini.</p>
+            <button id="closeAlertBtn">OK, Sayang</button>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Rencana Kencan Kita 💕</h1>
         <p class="subtitle">Yuk, rencanakan hari spesial kita! Isi form ini ya Widia Cantik...</p>
@@ -263,7 +341,7 @@
                 <label>Mau nonton di mana, Cantik? 🎬</label>
                 <div class="options">
                     <div class="option-item">
-                        <input type="radio" id="dp" name="bioskop" value="DP" required>
+                        <input type="radio" id="dp" name="bioskop" value="DP">
                         <label for="dp">DP</label>
                     </div>
                     <div class="option-item">
@@ -279,7 +357,6 @@
                         <label for="tempat-lainnya">Tempat Lainnya</label>
                     </div>
                 </div>
-                <!-- --- PERUBAHAN: INPUT KONDISIONAL UNTUK TEMPAT --- -->
                 <div id="tempat-lainnya-field" class="conditional-input">
                     <input type="text" id="tempat-lainnya-input" placeholder="Ketik tempatnya di sini...">
                 </div>
@@ -296,7 +373,7 @@
                 <label>Abis itu, mau makan di mana? 🍜</label>
                 <div class="options">
                     <div class="option-item">
-                        <input type="radio" id="golden-lamian" name="makan" value="Golden Lamian" required>
+                        <input type="radio" id="golden-lamian" name="makan" value="Golden Lamian">
                         <label for="golden-lamian">Golden Lamian</label>
                     </div>
                     <div class="option-item">
@@ -312,7 +389,6 @@
                         <label for="lainnya">Lainnya</label>
                     </div>
                 </div>
-                <!-- --- PERUBAHAN: INPUT KONDISIONAL UNTUK MAKAN --- -->
                 <div id="makan-lainnya-field" class="conditional-input">
                     <input type="text" id="makan-lainnya-input" placeholder="Ketik tempat makan di sini...">
                 </div>
@@ -349,13 +425,12 @@
             }
             setInterval(createHeart, 800);
 
-            // --- PERUBAHAN: LOGIKA UNTUK INPUT KONDISIONAL ---
+            // --- LOGIKA UNTUK INPUT KONDISIONAL ---
             const tempatLainnyaRadio = document.getElementById('tempat-lainnya');
             const tempatLainnyaField = document.getElementById('tempat-lainnya-field');
             const makanLainnyaRadio = document.getElementById('lainnya');
             const makanLainnyaField = document.getElementById('makan-lainnya-field');
 
-            // Event listener untuk radio button bioskop
             document.querySelectorAll('input[name="bioskop"]').forEach(radio => {
                 radio.addEventListener('change', () => {
                     if (tempatLainnyaRadio.checked) {
@@ -366,7 +441,6 @@
                 });
             });
 
-            // Event listener untuk radio button makan
             document.querySelectorAll('input[name="makan"]').forEach(radio => {
                 radio.addEventListener('change', () => {
                     if (makanLainnyaRadio.checked) {
@@ -377,38 +451,69 @@
                 });
             });
 
-            // --- LOGIKA FORM UNTUK WHATSAPP ---
+            // --- PERUBAHAN: LOGIKA UNTUK CUSTOM ALERT ---
+            const customAlert = document.getElementById('customAlert');
+            const customAlertMessage = document.getElementById('customAlertMessage');
+            const closeAlertBtn = document.getElementById('closeAlertBtn');
+
+            function showCustomAlert(message) {
+                customAlertMessage.innerText = message;
+                customAlert.style.display = 'flex';
+            }
+
+            function closeCustomAlert() {
+                customAlert.style.display = 'none';
+            }
+
+            closeAlertBtn.addEventListener('click', closeCustomAlert);
+
+            // --- LOGIKA FORM UNTUK WHATSAPP (MENGGUNAKAN CUSTOM ALERT) ---
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
 
-                // --- PERUBAHAN: AMBIL NILAI DARI INPUT KONDISIONAL ---
+                // --- VALIDASI 1: UNTUK TEMPAT NONTON ---
                 const bioskopRadio = document.querySelector('input[name="bioskop"]:checked');
+                if (!bioskopRadio) {
+                    showCustomAlert('Pilih tempat nontonnya dulu ya, Cantik! 🎬');
+                    return;
+                }
                 let bioskopValue = bioskopRadio.value;
                 if (bioskopValue === 'Tempat Lainnya') {
                     bioskopValue = document.getElementById('tempat-lainnya-input').value;
-                    if (!bioskopValue) { // Validasi jika kosong
-                        alert('Mohon isi tempat nontonnya ya, Cantik!');
+                    if (!bioskopValue.trim()) {
+                        showCustomAlert('Isi tempat nontonnya di kolom "Lainnya" ya, Cantik! 🎬');
                         return;
                     }
                 }
 
+                // --- VALIDASI 2: UNTUK JUDUL FILM ---
                 const film = document.getElementById('film').value;
+                if (!film.trim()) {
+                    showCustomAlert('Isi judul filmnya dulu ya, Cantik! 🍿');
+                    return;
+                }
 
+                // --- VALIDASI 3: UNTUK TEMPAT MAKAN ---
                 const makanRadio = document.querySelector('input[name="makan"]:checked');
+                if (!makanRadio) {
+                    showCustomAlert('Pilih tempat makannya dulu ya, Cantik! 🍜');
+                    return;
+                }
                 let makanValue = makanRadio.value;
                 if (makanValue === 'Lainnya') {
                     makanValue = document.getElementById('makan-lainnya-input').value;
-                    if (!makanValue) { // Validasi jika kosong
-                        alert('Mohon isi tempat makannya ya, Cantik!');
+                    if (!makanValue.trim()) {
+                        showCustomAlert('Isi tempat makannya di kolom "Lainnya" ya, Cantik! 🍜');
                         return;
                     }
                 }
 
+                // Jika semua validasi lolos, lanjut ke WhatsApp
                 const noWa = '6282220490991';
-                const pesanWhatsApp = "*Ini rencana kencan kita ya:* \n" +
-                    "- Tempat Nonton: " + bioskopValue + "\n" +
-                    "- Film: " + film + "\n" +
-                    "- Makan: " + makanValue + "\n";
+                const pesanWhatsApp = "*Ini rencana kencan kita ya:*\n\n" +
+                    "*Tempat Nonton:* " + bioskopValue + "\n" +
+                    "*Film:* " + film + "\n" +
+                    "*Makan:* " + makanValue;
 
                 const pesanTerencode = encodeURIComponent(pesanWhatsApp);
                 const urlWhatsApp = `https://wa.me/${noWa}?text=${pesanTerencode}`;

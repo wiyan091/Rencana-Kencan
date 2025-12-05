@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesan Spesial untuk Devi 💖</title>
+    <!-- Menghubungkan ke file CSS -->
+
+    <!-- Menggunakan font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Gaya Umum untuk Seluruh Halaman */
+      body {
+        font-family: "Poppins", sans-serif;
+        /* Gradien pink yang romantis dan lembut */
+        background: linear-gradient(to right, #ff9a9e, #fecfef);
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      /* Kotak Konten Utama */
+      .container {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.85
+        ); /* Sedikit transparan agar menyatu dengan background */
+        padding: 40px;
+        border-radius: 25px; /* Sudut lebih melengkar untuk kesan lebih lembut */
+        box-shadow: 0 10px 30px rgba(233, 30, 99, 0.2); /* Bayangan pink */
+        max-width: 600px;
+        width: 100%;
+      }
+
+      /* Judul Utama */
+      h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 2.8em;
+        color: #c2185b; /* Warna pink tua yang romantis */
+        margin-bottom: 20px;
+      }
+
+      /* Paragraf Pembuka */
+      .intro {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #555;
+      }
+
+      /* Gaya untuk paragraf biasa */
+      p {
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Gaya untuk bagian "Menurutku, Kamu Itu..." */
+      .reasons {
+        background-color: #fce4ec; /* Latar belakang pink pastel yang sangat lembut */
+        border-left: 5px solid #f48fb1; /* Garis pink muda */
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 15px;
+        text-align: left;
+      }
+
+      .reasons h2 {
+        margin-top: 0;
+        color: #880e4f; /* Warna pink tua untuk kontras */
+        text-align: center;
+      }
+
+      /* Gaya untuk daftar/list */
+      .reasons ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .reasons li {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      /* Tombol Interaktif */
+      .surprise-btn {
+        background-color: #e91e63; /* Warna pink cerah yang menarik */
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* Efek saat tombol di-hover */
+      .surprise-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4); /* Bayangan pink saat di-hover */
+      }
+
+      /* Pesan Rahasia yang Awalnya Tersembunyi */
+      .hidden-message {
+        display: none;
+        background-color: #fce4ec; /* Sama dengan box reasons, untuk konsistensi */
+        border: 1px solid #f8bbd0; /* Border pink yang sangat muda */
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        font-style: italic;
+        color: #ad1457; /* Warna pink untuk teks pesan rahasia */
+        animation: fadeIn 1s;
+      }
+
+      /* Animasi sederhana untuk efek muncul */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Agar tampilan tetap bagus di layar HP */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2.2em;
+        }
+        .container {
+          padding: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Hai, Perawat Kesayanganku 💕</h1>
+      </header>
+
+      <main>
+        <p class="intro">
+          Setiap aku lihat kamu dengan seragamnya, aku selalu berpikir... "Wah,
+          dia itu pahlawan beneran." Aku salut banget sama dedikasi dan kerja
+          kerasmu.
+        </p>
+
+        <p>
+          Tapi, di antara semua orang yang kamu rawat, jangan lupa untuk merawat
+          dirimu sendiri, ya. Itu yang paling penting buat aku. Jangan sampe
+          capek, ya. Istirahat yang cukup! 🤗
+        </p>
+
+        <div class="reasons">
+          <h2>Menurutku, Kamu Itu...</h2>
+          <ul>
+            <li>💖 Luar biasa sabar dan penuh perhatian.</li>
+            <li>🩹 Punya sentuhan yang bisa menenangkan siapa saja.</li>
+            <li>
+              ☕️ Tetap terlihat cantik, bahkan di saat-saat paling lelah
+              sekalipun.
+            </li>
+            <li>😊 Senyum kamu itu obat paling mujarab, lho.</li>
+          </ul>
+        </div>
+
+        <button class="surprise-btn" onclick="tampilkanPesan()">
+          Klik untuk Pesan Spesial 💕
+        </button>
+
+        <div id="pesan-rahasia" class="hidden-message">
+          <p>
+            "Sejujurnya, aku sering kepikiran kamu. Semoga harimu selalu
+            menyenangkan dan tidak terlalu berat. Kalau lagi ada masalah atau
+            butuh teman curhat, aku siap kok. Teruslah menjadi dirimu yang
+            hebat, ya. Kamu itu istimewa, Devi. Semangat terus! 💪"
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Kode JavaScript untuk interaktivitas -->
+    <script>
+      function tampilkanPesan() {
+        var pesan = document.getElementById("pesan-rahasia");
+        pesan.style.display = "block";
+        var tombol = document.querySelector(".surprise-btn");
+        tombol.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
